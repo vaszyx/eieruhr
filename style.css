@@ -1,0 +1,199 @@
+:root {
+  color-scheme: light dark;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f4f4f5;
+  color: #111827;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #fef3c7, #fee2e2 60%, #ede9fe);
+}
+
+.app {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
+  padding: 2.5rem;
+  max-width: 440px;
+  width: 90vw;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.app__header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+.app__header p {
+  margin: 0;
+  text-align: center;
+  color: #4b5563;
+}
+
+.timer__display {
+  font-size: clamp(3rem, 6vw + 1rem, 4.5rem);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.timer__inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field__label {
+  font-weight: 600;
+  color: #111827;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+input[type="number"]:focus {
+  outline: 3px solid rgba(99, 102, 241, 0.3);
+  border-color: rgba(99, 102, 241, 0.6);
+}
+
+.timer__buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: rgba(99, 102, 241, 0.12);
+  color: #1f2937;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(79, 70, 229, 0.12);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn--primary {
+  background: linear-gradient(120deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.presets h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.preset-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.preset {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  background-color: rgba(252, 211, 77, 0.3);
+  color: #b45309;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.preset:hover {
+  transform: translateY(-1px);
+  background-color: rgba(251, 191, 36, 0.5);
+}
+
+.status__message {
+  margin: 0;
+  text-align: center;
+  color: #6b7280;
+}
+
+.toast {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 1.5rem;
+  margin-inline: auto;
+  width: fit-content;
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+  background: #22c55e;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.35);
+  animation: fade-in 0.3s ease;
+}
+
+.toast.is-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.toast__close {
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .app {
+    padding: 1.75rem;
+  }
+
+  .timer__display {
+    font-size: clamp(2.5rem, 10vw + 1rem, 3.5rem);
+  }
+}

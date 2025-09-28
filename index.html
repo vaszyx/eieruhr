@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eieruhr</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1>Eieruhr</h1>
+      <p>Stelle einen Timer, um perfekte Eier zu kochen – oder wofür auch immer du eine Eieruhr brauchst.</p>
+    </header>
+
+    <section class="timer" aria-live="polite">
+      <div class="timer__display" role="timer" aria-atomic="true">
+        <span id="time-display">00:00</span>
+      </div>
+
+      <div class="timer__inputs">
+        <label class="field">
+          <span class="field__label">Minuten</span>
+          <input id="minutes" type="number" min="0" max="99" value="0" aria-label="Minuten">
+        </label>
+        <label class="field">
+          <span class="field__label">Sekunden</span>
+          <input id="seconds" type="number" min="0" max="59" value="0" aria-label="Sekunden">
+        </label>
+      </div>
+
+      <div class="timer__buttons">
+        <button id="start-btn" class="btn btn--primary">Start</button>
+        <button id="pause-btn" class="btn" disabled>Pausieren</button>
+        <button id="reset-btn" class="btn" disabled>Zurücksetzen</button>
+      </div>
+    </section>
+
+    <section class="presets" aria-label="Voreinstellungen">
+      <h2>Beliebte Zeiten</h2>
+      <div class="preset-list">
+        <button class="preset" data-seconds="180">3 Min</button>
+        <button class="preset" data-seconds="300">5 Min</button>
+        <button class="preset" data-seconds="420">7 Min</button>
+        <button class="preset" data-seconds="600">10 Min</button>
+      </div>
+    </section>
+
+    <section class="status" aria-live="polite">
+      <p id="status-message" class="status__message">Bereit.</p>
+    </section>
+  </main>
+
+  <template id="toast-template">
+    <div class="toast" role="alert" aria-live="assertive">
+      <strong>Zeit abgelaufen!</strong>
+      <button type="button" class="toast__close" aria-label="Schließen">×</button>
+    </div>
+  </template>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
